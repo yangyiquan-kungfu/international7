@@ -147,6 +147,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;height:au
     <a class="nav-a active">Arsenal</a>
     <a class="nav-a" href="books.html">Books</a>
     <a class="nav-a" href="treino.html">Training</a>
+    <a class="nav-a" href="ai-assistant.html" style="color:#d4af37;font-size:9px;">🤖 AI</a>
     <div class="lang-picker">
       <button class="lang-btn" id="lang-btn">🌐 <span class="lang-code">EN</span> ▾</button>
       <div class="lang-dropdown" id="lang-dd">
@@ -384,7 +385,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;height:au
     <a href="books.html" class="footer-a">Books</a>
     <a href="treino.html" class="footer-a">Training</a>
   </div>
-  <div class="footer-copy">© 2025 · Yangyiquan Kung Fu SDA International · Granada, España</div>
+  <div class="footer-copy">© 2026 · Yangyiquan Kung Fu SDA International · Granada, España</div>
 </footer>
 
 <!-- POPUP -->
@@ -448,6 +449,167 @@ GLOS.forEach(g=>{
   tr.addEventListener('click',()=>openPopup({zh:g.zh,pinyin:g.py,en:g.en,body:`<strong>${g.en}</strong><br><br>${g.desc}`}));
   tbody.appendChild(tr);
 });
+</script>
+<script>
+// ══════════════════════════════════════════════════════════
+// FULL-PAGE TRANSLATION SYSTEM — All content, all languages
+// ══════════════════════════════════════════════════════════
+const PAGE_TX = {
+  PT: {
+    // NAV
+    'nav-a-home':'Início','nav-a-arsenal':'Arsenal','nav-a-books':'Livros',
+    'nav-a-training':'Treino','nav-a-contact':'Contacto',
+    // HERO
+    'hero-eyebrow':'O Punho da Luz da Intenção',
+    'hero-title-main':'YANGYIQUAN',
+    'hero-sub':'Um sistema marcial em desenvolvimento activo, fundado por Pedro Barros (Sultan Assad Abd-Al-Ghalib). A filosofia do guerreiro iluminado.',
+    'hero-cta1':'◆ Descobrir o Sistema','hero-cta2':'Ver Arsenal Técnico',
+    // ABOUT
+    'sh-about-ey':'O Fundador','sh-about-h2':'Sifu Sultan Assad Abd-Al-Ghalib',
+    'sh-about-p':'Um praticante que dedicou décadas ao estudo, refinamento e partilha da sua própria síntese das artes marciais chinesas.',
+    'about-role':'Pedro Barros · Fundador · Instrutor Chefe',
+    'about-p1':'Pedro Barros tem mais de vinte anos de estudo das artes marciais chinesas internas e externas. Sob a orientação do Shifu Diogo Sant'Ana, aprofundou Yang Taijiquan, Chen Taijiquan e Nanquan. Sob o Sensei Carmindo Paiva, solidificou a sua base em Karate Shukokai.',
+    'about-p2':'Desta base rigorosa desenvolveu uma síntese pessoal — o Yangyiquan — um sistema vivo que continua a refinar através da prática diária e do ensino. O sistema é apresentado honestamente como um trabalho em desenvolvimento activo.',
+    'about-p3':'Baseado em Granada, Andaluzia, Espanha. A Yangyiquan Kung Fu Self Defense Association International está em fase institucional inicial.',
+    // SYSTEM
+    'sh-system-ey':'O Sistema','sh-system-h2':'Filosofia · Os Três Pilares',
+    'sh-system-p':'Como muitas tradições marciais chinesas, o Yangyiquan organiza-se em torno de três princípios interligados. A síntese específica do Sifu define o carácter do sistema.',
+    'yi-name':'Yi · 意 — Intenção',
+    'yi-desc':'A força condutora de qualquer movimento. Sem intenção clara, a técnica torna-se mecânica. O treino cultiva a capacidade de dirigir o corpo com propósito focado. Clique para saber mais.',
+    'qi-name':'Qi · 气 — Energia Vital',
+    'qi-desc':'Cultivado através da respiração, postura e presença. O Dan Tian é o seu reservatório primário. Dirigido pelo Yi, expresso como Fajin. Clique para saber mais.',
+    'dt-name':'Dan Tian · 丹田 — Centro',
+    'dt-desc':'O centro energético do corpo — a três dedos abaixo do umbigo. Três Dan Tian. A fonte de todo o Fajin e de toda a potência do sistema. Clique para saber mais.',
+    'quote-label':'DO DOSSIER OFICIAL — 3 VOLUMES',
+    'quote-text':'"O Yangyiquan não é uma colecção fechada de técnicas. É uma prática viva — que continuo a estudar, refinar e partilhar. O que ofereço é o que sei, honestamente transmitido."',
+    // NEI
+    'sh-nei-ey':'Os 9 Poderes Internos','sh-nei-h2':'Nei Gong · 内功',
+    'sh-nei-p':'Nove Poderes Internos articulados pelo Sifu — o fundamento psicológico, espiritual e táctico que distingue o Yangyiquan das artes marciais convencionais. Clique em qualquer cartão para explorar.',
+    'nei-extreme-label':'PODERES EXTREMOS · 极端力量',
+    // LEAD
+    'sh-lead-title':'OS 9 PODERES INTERNOS','sh-lead-sub':'Nei Gong (内功) — O Manual Secreto',
+    'sh-lead-desc':'Receba gratuitamente o resumo dos 9 Poderes Internos do Yangyiquan. O guia filosófico-marcial que fundamenta todo o sistema.',
+    'lead-email-ph':'O seu email','lead-btn-text':'◆ Receber o Manual Gratuito',
+    'lead-note-text':'Sem spam. Apenas sabedoria marcial.',
+    // CONTACT
+    'sh-contact-ey':'Contacto','sh-contact-h2':'Iniciar o Caminho',
+    'sh-contact-p':'O Sifu responde pessoalmente a cada mensagem. Baseado em Granada, Andaluzia, Espanha.',
+    'contact-wa-label':'WHATSAPP','contact-wa-sub':'Canal preferencial',
+    'contact-email-label':'EMAIL','contact-email-sub':'Consultas gerais',
+    'contact-ig-label':'INSTAGRAM','contact-ig-sub':'Conteúdo diário',
+    'contact-main-btn':'◆ Mensagem Directa ao Sifu',
+    // FOOTER
+    'footer-who':'Sifu Sultan Assad Abd-Al-Ghalib (Pedro Barros) · Granada, Andaluzia, Espanha',
+    'footer-copy':'© 2026 · Todos os direitos reservados · Yangyiquan Kung Fu SDA International',
+  },
+  ES: {
+    'nav-a-home':'Inicio','nav-a-arsenal':'Arsenal','nav-a-books':'Libros',
+    'nav-a-training':'Entrenamiento','nav-a-contact':'Contacto',
+    'hero-eyebrow':'El Puño de la Luz de la Intención',
+    'hero-title-main':'YANGYIQUAN',
+    'hero-sub':'Un sistema marcial en desarrollo activo, fundado por Pedro Barros (Sultan Assad Abd-Al-Ghalib). La filosofía del guerrero iluminado.',
+    'hero-cta1':'◆ Descubrir el Sistema','hero-cta2':'Ver Arsenal Técnico',
+    'sh-about-ey':'El Fundador','sh-about-h2':'Sifu Sultan Assad Abd-Al-Ghalib',
+    'sh-about-p':'Un practicante que ha dedicado décadas al estudio, refinamiento y transmisión de su propia síntesis de las artes marciales chinas.',
+    'about-role':'Pedro Barros · Fundador · Instructor Jefe',
+    'about-p1':'Pedro Barros tiene más de veinte años de estudio de las artes marciales chinas internas y externas. Bajo la guía de Shifu Diogo Sant'Ana profundizó en Yang Taijiquan, Chen Taijiquan y Nanquan. Bajo Sensei Carmindo Paiva solidificó su base en Karate Shukokai.',
+    'about-p2':'De esta base rigurosa desarrolló una síntesis personal — el Yangyiquan — un sistema vivo que continúa refinando a través de la práctica diaria y la enseñanza. El sistema se presenta honestamente como trabajo en desarrollo activo.',
+    'about-p3':'Con base en Granada, Andalucía, España. La Yangyiquan Kung Fu Self Defense Association International está en su fase institucional inicial.',
+    'sh-system-ey':'El Sistema','sh-system-h2':'Filosofía · Los Tres Pilares',
+    'sh-system-p':'Como muchas tradiciones marciales chinas, el Yangyiquan se organiza en torno a tres principios interconectados. La síntesis específica del Sifu define el carácter del sistema.',
+    'yi-name':'Yi · 意 — Intención',
+    'yi-desc':'La fuerza conductora de cualquier movimiento. Sin intención clara, la técnica se vuelve mecánica. El entrenamiento cultiva la capacidad de dirigir el cuerpo con propósito enfocado.',
+    'qi-name':'Qi · 气 — Energía Vital',
+    'qi-desc':'Cultivado a través de la respiración, postura y presencia. El Dan Tian es su reservorio primario. Dirigido por el Yi, expresado como Fajin.',
+    'dt-name':'Dan Tian · 丹田 — Centro',
+    'dt-desc':'El centro energético del cuerpo — tres dedos bajo el ombligo. Tres Dan Tian. La fuente de todo el Fajin y toda la potencia del sistema.',
+    'quote-label':'DEL DOSSIER OFICIAL — 3 VOLÚMENES',
+    'quote-text':'"El Yangyiquan no es una colección cerrada de técnicas. Es una práctica viva — que sigo estudiando, refinando y compartiendo. Lo que ofrezco es lo que sé, honestamente transmitido."',
+    'sh-nei-ey':'Los 9 Poderes Internos','sh-nei-h2':'Nei Gong · 内功',
+    'sh-nei-p':'Nueve Poderes Internos articulados por el Sifu — el fundamento psicológico, espiritual y táctico que distingue el Yangyiquan de las artes marciales convencionales. Haga clic en cualquier tarjeta.',
+    'nei-extreme-label':'PODERES EXTREMOS · 极端力量',
+    'sh-lead-title':'LOS 9 PODERES INTERNOS','sh-lead-sub':'Nei Gong (内功) — El Manual Secreto',
+    'sh-lead-desc':'Reciba gratuitamente el resumen de los 9 Poderes Internos del Yangyiquan. La guía filosófico-marcial que fundamenta todo el sistema.',
+    'lead-email-ph':'Su correo electrónico','lead-btn-text':'◆ Recibir el Manual Gratuito',
+    'lead-note-text':'Sin spam. Solo sabiduría marcial.',
+    'sh-contact-ey':'Contacto','sh-contact-h2':'Iniciar el Camino',
+    'sh-contact-p':'El Sifu responde personalmente a cada mensaje. Con base en Granada, Andalucía, España.',
+    'contact-wa-label':'WHATSAPP','contact-wa-sub':'Canal preferido',
+    'contact-email-label':'EMAIL','contact-email-sub':'Consultas generales',
+    'contact-ig-label':'INSTAGRAM','contact-ig-sub':'Contenido diario',
+    'contact-main-btn':'◆ Mensaje Directo al Sifu',
+    'footer-who':'Sifu Sultan Assad Abd-Al-Ghalib (Pedro Barros) · Granada, Andalucía, España',
+    'footer-copy':'© 2026 · Todos los derechos reservados · Yangyiquan Kung Fu SDA International',
+  },
+  ZH: {
+    'nav-a-home':'主页','nav-a-arsenal':'武库','nav-a-books':'书籍',
+    'nav-a-training':'训练','nav-a-contact':'联系',
+    'hero-eyebrow':'阳意之拳','hero-title-main':'阳意拳',
+    'hero-sub':'一个积极发展中的武术体系，由 Pedro Barros (Sultan Assad Abd-Al-Ghalib) 创立。光明战士的哲学。',
+    'hero-cta1':'◆ 探索体系','hero-cta2':'查看技术武库',
+    'sh-about-ey':'创始人','sh-about-h2':'师父 Sultan Assad Abd-Al-Ghalib',
+    'sh-about-p':'一位将数十年致力于研究、精炼和传授自己中国武术综合体系的修习者。',
+    'about-role':'Pedro Barros · 创始人 · 首席教练',
+    'about-p1':'Pedro Barros 研究中国内外家武术超过二十年。在 Shifu Diogo Sant'Ana 的指导下，深入学习杨式太极、陈式太极和南拳。在 Sensei Carmindo Paiva 的指导下，巩固了空手道的基础。',
+    'about-p2':'从这一严格基础出发，他发展了个人综合体系——阳意拳——一个他通过日常练习和教学继续完善的活体系。该体系真实地呈现为积极开发中的工作。',
+    'about-p3':'驻地：西班牙安达卢西亚格拉纳达。阳意拳国际自卫协会处于初期机构阶段。',
+    'sh-system-ey':'体系','sh-system-h2':'哲学 · 三大支柱',
+    'sh-system-p':'如同许多中国武术传统，阳意拳围绕三个相互联系的原则组织。师父的具体综合定义了体系的特色。',
+    'yi-name':'意 · Yi — 意念',
+    'yi-desc':'任何动作的引导力量。没有清晰的意念，技术就变得机械化。训练培养以专注目的引导身体的能力。',
+    'qi-name':'气 · Qi — 生命能量',
+    'qi-desc':'通过呼吸、姿势和存在来培养。丹田是其主要储库。被意引导，以发劲表达。',
+    'dt-name':'丹田 · Dan Tian — 中心',
+    'dt-desc':'身体的能量中心——脐下约三指宽。三个丹田。所有发劲和体系全部力量的源泉。',
+    'quote-label':'摘自官方档案——三卷',
+    'quote-text':'"阳意拳不是一套已完成的技法集合。它是一种活的实践——我继续学习、精炼和分享。我所提供的是我所知道的，如实传授。"',
+    'sh-nei-ey':'九大内功','sh-nei-h2':'内功 · Nei Gong',
+    'sh-nei-p':'师父阐明的九大内功——将阳意拳与传统武术区分开来的心理、精神和战术基础。点击任意卡片探索。',
+    'nei-extreme-label':'极端力量',
+    'sh-lead-title':'九大内功','sh-lead-sub':'内功 — 秘籍',
+    'sh-lead-desc':'免费接收阳意拳九大内功摘要。构成整个体系基础的哲学武术指南。',
+    'lead-email-ph':'您的邮箱','lead-btn-text':'◆ 获取免费手册',
+    'lead-note-text':'无垃圾邮件，仅武术智慧。',
+    'sh-contact-ey':'联系','sh-contact-h2':'开始您的道路',
+    'sh-contact-p':'师父亲自回复每条消息。驻地：西班牙安达卢西亚格拉纳达。',
+    'contact-wa-label':'WHATSAPP','contact-wa-sub':'首选联系方式',
+    'contact-email-label':'邮箱','contact-email-sub':'一般咨询',
+    'contact-ig-label':'INSTAGRAM','contact-ig-sub':'每日内容',
+    'contact-main-btn':'◆ 直接给师父发消息',
+    'footer-who':'师父 Sultan Assad Abd-Al-Ghalib (Pedro Barros) · 西班牙安达卢西亚格拉纳达',
+    'footer-copy':'© 2026 · 版权所有 · Yangyiquan Kung Fu SDA International',
+  }
+};
+
+const TX_IDS = {
+  'nav-a-home': '[href="index.html"].nav-a',
+  'nav-a-arsenal': '[href="arsenal.html"].nav-a',
+  'nav-a-books': '[href="books.html"].nav-a',
+  'nav-a-training': '[href="treino.html"].nav-a',
+  'nav-a-contact': '.nav-a[href="#contact"]',
+};
+
+function applyFullTranslation(lang) {
+  const tx = PAGE_TX[lang];
+  if (!tx) return;
+  // Apply by data-tid attribute
+  document.querySelectorAll('[data-tid]').forEach(el => {
+    const key = el.getAttribute('data-tid');
+    if (tx[key]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = tx[key];
+      else el.innerHTML = tx[key];
+    }
+  });
+}
+
+// Extend existing setLang to also call applyFullTranslation
+const _origSetLang = typeof setLang === 'function' ? setLang : function(){};
+function setLang(l) {
+  _origSetLang(l);
+  applyFullTranslation(l);
+  document.querySelectorAll('.lang-code').forEach(el => el.textContent = l);
+  document.querySelectorAll('.lo, .lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === l || o.dataset.l === l));
+}
 </script>
 </body>
 </html>
