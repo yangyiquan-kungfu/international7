@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta name="google-site-verification" content="xDElBdWOqA8qaeZKdmvFT_7eZ8BuPlCzQQmfqJkNroo" />
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Yangyiquan AI Assistant | 阳意拳 · Sifu Pedro Barros</title>
+<title>Yangyiquan AI Assistant | 阳意拳 · Pedro Barros, Instructor Jefe</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Ma+Shan+Zheng&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#07070D;--bg2:#0F0F1A;--bg3:#161622;--gold:#d4af37;--g2:#b8960c;--cream:#f0e6c8;--muted:#8a7a60;--dim:#3a2a10;}
@@ -81,6 +81,72 @@ html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:
 .welcome p{font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);line-height:1.85;font-weight:300;}
 
 @media(max-width:700px){.sidebar{position:fixed;top:0;left:0;bottom:0;z-index:100;transform:translateX(-100%);transition:transform .3s;}.sidebar.open{transform:translateX(0);}.sidebar.collapsed{width:280px;transform:translateX(-100%);}}
+
+/* ═ RESPONSIVE ALL DEVICES ═ */
+*{max-width:100%;box-sizing:border-box;}
+img{max-width:100%;height:auto;}
+@media(max-width:900px){
+  .nav-links{display:none!important;}.hamburger{display:block!important;}
+  .section,.section-sm{padding:64px 18px!important;}
+  .grid-2,.grid-3{grid-template-columns:1fr!important;gap:18px!important;}
+  .sh h2{font-size:clamp(18px,6vw,28px)!important;}
+  .price-grid{grid-template-columns:1fr!important;max-width:440px;margin:0 auto;}
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .btn{letter-spacing:2px!important;font-size:10px!important;}
+  .tech-grid{grid-template-columns:1fr!important;}
+}
+@media(min-width:601px)and(max-width:900px){
+  .grid-3{grid-template-columns:repeat(2,1fr)!important;}
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+  .tech-grid{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:480px){
+  .section{padding:44px 14px!important;}
+  .card,.nei-card{padding:20px 14px!important;}
+  [style*="display:flex"]{flex-wrap:wrap!important;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .lead-form{flex-direction:column!important;}
+  .lead-input{width:100%!important;}
+}
+@media(min-width:769px)and(max-width:1024px){
+  .section{padding:80px 28px!important;}
+  .container{max-width:960px;}
+  .grid-3{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:600px){
+  .footer{padding:36px 16px;}
+  .footer-links{gap:12px;}
+}
+@media(min-width:1400px){
+  .container{max-width:1260px;}
+}
+@media(max-width:1023px){
+  body{padding-bottom:56px;}
+}
+
+
+/* ═══ PREMIUM COLOR SYSTEM ═══ */
+:root{--gold:#C9A84C;--gold2:#A07828;--gold3:#D4A843;--gold-hi:#E8C060;--cream:#F0DFC0;--cream2:#D8C8A0;--muted:#9A8060;--dim:#5A3E18;--navy:#1A2A4A;--blood:#7B1A1A;--card-bg:#15100A;--card-border:rgba(201,168,76,0.18);}
+body{background:#0B0906!important;color:#F0DFC0!important;}
+h1,h2,h3{color:#F0DFC0!important;text-shadow:1px 1px 4px rgba(0,0,0,0.8)!important;}
+.card,.nei-card{background:#15100A!important;border-color:rgba(201,168,76,0.18)!important;}
+.card:hover,.nei-card:hover{border-color:rgba(201,168,76,0.55)!important;}
+p,.sh p,[class*="desc"],[class*="body"]{color:#9A8060!important;}
+.sh-ey{color:#C9A84C!important;}
+.sh-ey::before{background:linear-gradient(to right,transparent,#C9A84C)!important;}
+.sh-ey::after{background:linear-gradient(to left,transparent,#C9A84C)!important;}
+.btn-gold,.btn-jade{background:linear-gradient(135deg,#C9A84C,#A07828,#C9A84C)!important;background-size:200%!important;color:#0B0906!important;font-weight:800!important;}
+.btn-ghost{color:#C9A84C!important;border-color:rgba(201,168,76,0.5)!important;}
+.footer{background:#070504!important;border-top-color:rgba(201,168,76,0.15)!important;}
+.footer-brand{color:#C9A84C!important;}
+.nav.scrolled{background:rgba(8,6,4,0.97)!important;}
+.nav-a{color:#D8C8A0!important;}
+.nav-a:hover,.nav-a.active{color:#C9A84C!important;}
+* {word-break:keep-all;overflow-wrap:break-word;}
+@media(max-width:600px){.hero-btns{flex-direction:column;align-items:center;gap:10px;width:100%;padding:0 16px;}
+.hero-btns a,.hero-btns button{width:100%;max-width:340px;font-size:10px!important;letter-spacing:1.5px!important;padding:13px 14px!important;white-space:normal;text-align:center;line-height:1.4;word-break:break-word;}}
+
 </style>
 </head>
 <body>
@@ -115,10 +181,10 @@ html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:
     <button class="topic-btn" onclick="ask('How does Yin-Yang energetic therapy work?')"><span class="dot"></span>Yin-Yang Therapy</button>
     <button class="topic-btn" onclick="ask('What is Yi therapeutic intention in healing?')"><span class="dot"></span>Yi Therapeutic Intention</button>
 
-    <div class="sidebar-section">Training & Books</div>
-    <button class="topic-btn" onclick="ask('What are the training plans and pricing?')"><span class="dot"></span>Training Plans & Pricing</button>
+    <div class="sidebar-section">Clases & Libros</div>
+    <button class="topic-btn" onclick="ask('What are the training plans and pricing?')"><span class="dot"></span>Clases Plans & Pricing</button>
     <button class="topic-btn" onclick="ask('Tell me about the 3-volume Yangyiquan books.')"><span class="dot"></span>The 3-Volume Set</button>
-    <button class="topic-btn" onclick="ask('How can I contact Sifu Pedro Barros?')"><span class="dot"></span>Contact & Location</button>
+    <button class="topic-btn" onclick="ask('How can I contact Pedro Barros, Instructor Jefe?')"><span class="dot"></span>Contacto & Location</button>
 
     <div class="sidebar-footer">
       <a class="back-link" href="index.html">← Back to Yangyiquan</a>
@@ -145,7 +211,7 @@ html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:
         <h2>Yangyiquan AI Assistant</h2>
         <div style="font-family:'Ma Shan Zheng',serif;font-size:26px;color:var(--gold);opacity:.8;margin:8px 0;letter-spacing:8px;">阳意拳法</div>
         <p>I am trained on the complete Yangyiquan Dossier Oficial — from the 9 Internal Powers (Nei Gong) to the 6 Dragon techniques, Dao Zhiliao medicine, Dit Da Jow formulas and the philosophical foundations of the system. Ask me anything.</p>
-        <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--dim);margin-top:14px;">Sifu Sultan Assad Abd-Al-Ghalib · Pedro Barros · Granada, España</div>
+        <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--dim);margin-top:14px;">Sultan Assad Abd-Al-Ghalib · Pedro Barros · Granada, España</div>
       </div>
     </div>
 
@@ -181,7 +247,7 @@ The name encodes its complete essence in three Chinese characters:
 • <span class="zh">意</span> <strong>Yi</strong> — Intention, Mind, Will. The pulsing core: the idea that precedes movement, the thought that governs energy.
 • <span class="zh">拳</span> <strong>Quan</strong> — Fist, system of combat. Not merely a physical strike, but the totality of structured techniques, principles and philosophy.
 
-Translated with precision: <em>"The Fist of the Light of Intention"</em>. The system postulates that supremacy in combat resides not in muscle mass or brute speed, but in the clarity and purity of mental intention. Built upon decades of training under <strong>Shifu Diogo Sant'Ana</strong> (Yang Taijiquan, Chen Taijiquan, Nanquan) and <strong>Sensei Carmindo Paiva</strong> (Karate Shukokai), and officially presented for international recognition.
+Translated with precision: <em>"The Fist of the Light of Intention"</em>. The system postulates that supremacy in combat resides not in muscle mass or brute speed, but in the clarity and purity of mental intention. Built upon decades of training under <strong>Shifu Diogo SantAna</strong> (Yang Taijiquan, Chen Taijiquan, Nanquan) and <strong>Sensei Carmindo Paiva</strong> (Karate Shukokai), and officially presented for international recognition.
 
 It is a living system — actively in development. Each technique is studied, tested and refined over time.`
   },
@@ -193,7 +259,7 @@ It is a living system — actively in development. Each technique is studied, te
 
 <strong>"The greatest war you have won is the one you did not begin."</strong>
 
-This axiom, pronounced by the Sifu, resonates with Sun Tzu — but elevates strategy to a universal spiritual law. The Yangyiquan recognizes <strong>three dimensions of conflict</strong>:
+This axiom, pronounced by el Instructor, resonates with Sun Tzu — but elevates strategy to a universal spiritual law. The Yangyiquan recognizes <strong>three dimensions of conflict</strong>:
 
 • <strong>The Exterior War</strong> — physical combat
 • <strong>The Interior War</strong> — combat against one's own fears, vices and limitations
@@ -210,7 +276,7 @@ The central paradox: <em>"The best attack is defense."</em> Every physical attac
     response: `The <strong>Three Unbreakable Virtues of Yangyiquan</strong> — the foundation of all practice:
 
 <strong>I. PATIENCE (忍) — Mastery of Suffering</strong>
-Patience in Yangyiquan is not passive resignation; it is the active manifestation of interior mastery. The warrior absorbs the blow of suffering as water absorbs rock: without breaking. In combat: the patient warrior observes, accumulates information, concentrates force in the Dan Tian, and releases all potency at the precise instant of maximum adversary opening. The Sifu teaches: <em>"When you wish to speak ill of someone, do not say it; you will see marvels blossom within you."</em>
+Patience in Yangyiquan is not passive resignation; it is the active manifestation of interior mastery. The warrior absorbs the blow of suffering as water absorbs rock: without breaking. In combat: the patient warrior observes, accumulates information, concentrates force in the Dan Tian, and releases all potency at the precise instant of maximum adversary opening. El Instructor teaches: <em>"When you wish to speak ill of someone, do not say it; you will see marvels blossom within you."</em>
 
 <strong>II. KINDNESS (善) — Water that Gives Life</strong>
 Not naïve or sentimental kindness, but kindness as deep comprehension of human nature. The advanced practitioner develops the capacity of Shén Shí — placing themselves in the emotional place of the adversary, feeling their deepest fears and most hidden intentions. This martial empathy doesn't weaken — it makes infinitely more effective, because it understands the enemy better than the enemy understands himself.
@@ -225,7 +291,7 @@ Not a sentimental concession, but a strategic act. Not forgiving is like holding
     response: `The <strong>Three Pillars of Yangyiquan</strong>:
 
 <span class="zh">意</span> <strong>Yi — Intention</strong>
-Without Yi, there is no true Wushu. Intention is the commander — the idea that precedes and governs every movement. The Yi guides the Qi; without clear intention, technique becomes merely mechanical. Training cultivates the ability to project intention beyond the physical movement itself.
+Without Yi, there is no true Wushu. Intention is the commander — the idea that precedes and governs every movement. The Yi guides the Qi; without clear intention, technique becomes merely mechanical. Clases cultivates the ability to project intention beyond the physical movement itself.
 
 <span class="zh">气</span> <strong>Qi — Vital Energy</strong>
 Qi flows through the meridians. In Yangyiquan it is cultivated through breath, posture and presence. Directed by Yi, it flows to the Dan Tian and is stored for controlled release.
@@ -244,7 +310,7 @@ The body's primary energetic centre — approximately three finger-widths below 
     keys: ['nei gong','9 power','nine power','internal power','extreme power','poder extremo','internal work','已','yì jīng','ya está','already','tian heaven','di ci','earth magnet','di yu','underworld'],
     response: `<strong>Nei Gong (内功) — The 9 Internal Powers</strong>
 
-Articulated and named by Sifu Pedro Barros — the psychological, spiritual and tactical foundation of Yangyiquan.
+Articulated and named by Pedro Barros, Instructor Jefe — the psychological, spiritual and tactical foundation of Yangyiquan.
 
 <strong>THE 4 EXTREME POWERS:</strong>
 
@@ -329,11 +395,11 @@ Threaten the eyes with fingers — not as an end, but as distraction forcing the
     keys: ['dao zhiliao','cure through','cura','medicina','terapia','martial medicine','therapeutic','healing','shiatsu','pranic','sports massage','holistic'],
     response: `<strong>Dao Zhiliao (道治疗) — The Cure Through the Way</strong>
 
-A true martial system does not only destroy — it also heals. This is an irrevocable principle of Yangyiquan. Sifu Pedro Barros has integrated a complete medical and therapeutic system, drawing from his formal qualifications in <strong>Shiatsu, Sports Massage and Pranic Healing (Level 1)</strong>, combined with decades of martial therapeutic study.
+A true martial system does not only destroy — it also heals. This is an irrevocable principle of Yangyiquan. Pedro Barros, Instructor Jefe has integrated a complete medical and therapeutic system, drawing from his formal qualifications in <strong>Shiatsu, Sports Massage and Pranic Healing (Level 1)</strong>, combined with decades of martial therapeutic study.
 
 <strong>Three Therapeutic Pillars:</strong>
 
-<span class="zh">药</span> <strong>Dit Da Jow (跌打酒)</strong> — Five original topical herbal formulations targeting different biological tissues. Alcoholic maceration — efficacy increases exponentially with time (up to 100% at full maturity).
+<span class="zh">药</span> <strong>Dit Da Jow (跌打酒)</strong> — Cinco formulaciones herbales tópicas originales para diferentes tejidos biológicos. Maceración alcohólica — la eficacia aumenta exponencialmente con el tiempo (hasta el 100% en plena madurez).
 
 <span class="zh">气</span> <strong>Yin-Yang Energetic Therapy</strong> — Yang Therapy: warm golden-white light directed by Yi toward areas needing activation, warmth or strengthening. Yin Therapy: cool dark receptive energy to extract inflammation, excess heat and energetic toxins.
 
@@ -357,7 +423,7 @@ III. <strong>Joint Relief</strong> — Joint inflammation & regeneration · Effi
 IV. <strong>Skin Regenerator</strong> — Dermal cicatrisation & renewal · Efficacy: 97-99%
 V. <strong>Muscle & Soft Tissue</strong> — Muscular recovery & deep tissue · Efficacy: 97-99%
 
-The botanical composition of each formula is the exclusive intellectual property of Sifu Pedro Barros — a proprietary synthesis combining Chinese pharmacopoeial plants with selected Iberian medicinal herbs, developed through years of empirical research. The precise composition and preparation method are confidential and not disclosed publicly. The formulas are prepared and applied exclusively within the Yangyiquan system.
+The botanical composition of each formula is the exclusive intellectual property of Pedro Barros, Instructor Jefe — a proprietary synthesis combining Chinese pharmacopoeial plants with selected Iberian medicinal herbs, developed through years of empirical research. The precise composition and preparation method are confidential and not disclosed publicly. The formulas are prepared and applied exclusively within the Yangyiquan system.
 
 <strong>Maceration Timeline:</strong> 6 months → 79-81% · 4 years → 83-88% · 20 years → 96-98% · 20+ years (supreme ingredients) → 99-100%
 
@@ -367,23 +433,23 @@ The botanical composition of each formula is the exclusive intellectual property
   // ── TRAINING & PRICING ─────────────────────────────────────────────────
   training: {
     keys: ['train','price','precio','preço','cost','plan','50','100','200','mensual','monthly','private','presencial','granada','elite','intensiv','session'],
-    response: `<strong>Yangyiquan Training Plans — Granada, Andalucía, España</strong>
+    response: `<strong>Yangyiquan Clases Plans — Granada, Andalucía, España</strong>
 
 All formats are available in-person (Granada) and online (worldwide).
 
 <strong>Regular Monthly — 50€/month</strong>
-Group classes with the Sifu. Online or in-person. The solid starting point to learn the Yangyiquan foundations.
+Group classes with el Instructor. Online or in-person. The solid starting point to learn the Yangyiquan foundations.
 
 <strong>Elite Intensive — 200€/month</strong> ⭐ Best Value
-3 or more private sessions per week with the Sifu. Equivalent value to 1,200€ in individual sessions. Accelerated progression and deep technical correction.
+3 or more private sessions per week with el Instructor. Valor equivalente a 1.200€ en sesiones individuales. Progresión acelerada y corrección técnica profunda.
 
-<em>The Warrior's Calculation: 3 private sessions/week × 4 weeks × 100€/h = 1,200€ → Elite Plan: 200€/month. Saving: 1,000€.</em>
+<em>The Warrior's Calculation: 3 sesiones privadas/semana × 4 semanas × 100€/h = 1,200€ → Elite Plan: 200€/month. Saving: 1,000€.</em>
 
 <strong>Private Session — 100€/hour</strong>
-Individual session with the Sifu. Full personal attention. Ideal for targeted work without monthly commitment.
+Individual session with el Instructor. Full personal attention. Ideal for targeted work without monthly commitment.
 
-To start: message the Sifu directly on WhatsApp: <strong>+34 674 471 678</strong>
-For Elite Mentorship: apply via the Training page — selection is based on seriousness of intention.`
+To start: message el Instructor directly on WhatsApp: <strong>+34 674 471 678</strong>
+For Elite Mentorship: apply via the Clases page — selection is based on seriousness of intention.`
   },
 
   // ── BOOKS ─────────────────────────────────────────────────────────────
@@ -404,15 +470,15 @@ The complete therapeutic branch: the 5 Dit Da Jow formulas, Yin-Yang energetic t
 
 <strong>Currently available in Portuguese (Português).</strong> English edition in preparation.
 
-To order: WhatsApp <strong>+34 674 471 678</strong> or visit the Books page.
+To order: WhatsApp <strong>+34 674 471 678</strong> or visit the Libros page.
 
-<strong>Free 50-page manuscript available:</strong> A summary of all three volumes — message the Sifu on WhatsApp to receive it.`
+<strong>Free 50-page manuscript available:</strong> A summary of all three volumes — message el Instructor on WhatsApp to receive it.`
   },
 
   // ── CONTACT ────────────────────────────────────────────────────────────
   contact: {
     keys: ['contact','contacto','whatsapp','phone','telefon','email','instagram','granada','andaluc','espanha','spain','location','where','book session','appointment'],
-    response: `<strong>Contact Sifu Pedro Barros — Yangyiquan Kung Fu</strong>
+    response: `<strong>Contacto Pedro Barros, Instructor Jefe — Yangyiquan Kung Fu</strong>
 
 <strong>📱 WhatsApp (Preferred)</strong>
 +34 674 471 678
@@ -430,14 +496,14 @@ Granada, Andalucía, España
 In-person classes and Dao Zhiliao sessions by appointment.
 Online training available worldwide.
 
-The Sifu responds personally to every message. Sessions are by appointment — contact directly to arrange.`
+El Instructor responds personally to every message. Sessions are by appointment — contact directly to arrange.`
   },
 
   // ── DEFAULT ────────────────────────────────────────────────────────────
   default: {
     response: `Thank you for your question. My knowledge base covers the complete Yangyiquan Dossier Oficial — including the 9 Internal Powers, the 6 Dragon techniques, Dao Zhiliao medicine, the 5 Dit Da Jow formulas, combat philosophy, training plans and more.
 
-If you would like a more detailed or personal response, the Sifu Pedro Barros (Sultan Assad Abd-Al-Ghalib) responds personally: <strong>WhatsApp +34 674 471 678</strong>
+If you would like a more detailed or personal response, the Pedro Barros, Instructor Jefe (Sultan Assad Abd-Al-Ghalib) responds personally: <strong>WhatsApp +34 674 471 678</strong>
 
 You may also browse the topics on the left panel — or try asking me about a specific technique, power or concept from the system.`
   }
