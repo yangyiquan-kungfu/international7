@@ -690,5 +690,184 @@ function setLang(l) {
   document.querySelectorAll('.lo, .lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === l || o.dataset.l === l));
 }
 </script>
+
+
+<!-- ════════════════════════════════════════════════════════
+     ASISTENTE AI — POPUP + BOTÓN FLOTANTE (FIXED)
+     ════════════════════════════════════════════════════════ -->
+<style>
+/* AI OVERLAY — fully isolated, nothing leaks outside */
+#ai-overlay{position:fixed;inset:0;z-index:9600;background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:12px;}
+#ai-overlay.active{display:flex;}
+#ai-box{width:100%;max-width:680px;height:88vh;max-height:680px;
+  background:#0B0906;border:1px solid #C9A84C;
+  display:flex;flex-direction:column;overflow:hidden;position:relative;}
+#ai-header{background:linear-gradient(135deg,#1A2A4A,#0B1520);
+  padding:12px 16px;display:flex;align-items:center;
+  justify-content:space-between;border-bottom:1px solid rgba(201,168,76,0.2);
+  flex-shrink:0;}
+#ai-close{background:none;border:1px solid rgba(201,168,76,0.3);
+  color:#9A8060;font-size:15px;cursor:pointer;padding:5px 12px;
+  font-family:'Cinzel',serif;letter-spacing:1px;flex-shrink:0;}
+#ai-msgs{flex:1;overflow-y:auto;padding:14px;
+  display:flex;flex-direction:column;gap:10px;min-height:0;}
+#ai-msgs::-webkit-scrollbar{width:3px;}
+#ai-msgs::-webkit-scrollbar-thumb{background:#3A2A10;}
+/* CRITICAL: quick buttons MUST NOT be position:fixed */
+#ai-quick{padding:8px 12px;display:flex;flex-wrap:wrap;gap:5px;
+  border-top:1px solid rgba(201,168,76,0.12);background:#070504;
+  flex-shrink:0;overflow:hidden;}
+.aiq{font-family:'Inter',sans-serif;font-size:10px;color:#9A8060;
+  border:1px solid rgba(201,168,76,0.2);padding:4px 10px;cursor:pointer;
+  background:none;white-space:nowrap;transition:all .2s;flex-shrink:0;}
+.aiq:hover{color:#C9A84C;border-color:rgba(201,168,76,0.5);}
+#ai-input-row{padding:9px 12px;border-top:1px solid rgba(201,168,76,0.15);
+  display:flex;gap:8px;background:#0B0906;flex-shrink:0;}
+#ai-inp{flex:1;background:#15100A;border:1px solid rgba(201,168,76,0.2);
+  color:#F0DFC0;padding:9px 12px;font-family:'Inter',sans-serif;
+  font-size:13px;outline:none;min-width:0;}
+#ai-send{background:linear-gradient(135deg,#C9A84C,#A07828);border:none;
+  color:#0B0906;padding:9px 16px;font-family:'Cinzel',serif;
+  font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;}
+.ai-msg-bot{background:#15100A;border-left:2px solid #A07828;
+  padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;
+  color:#D8C8A0;line-height:1.75;word-break:break-word;}
+.ai-msg-user{background:rgba(201,168,76,0.09);border-right:2px solid #C9A84C;
+  padding:10px 14px;font-family:'Inter',sans-serif;font-size:13px;
+  color:#F0DFC0;line-height:1.7;align-self:flex-end;max-width:85%;
+  word-break:break-word;}
+/* FLOATING BUTTON — above sticky bar */
+#ai-fab{position:fixed;bottom:72px;right:18px;z-index:9400;
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg,#1A2A4A,#253A5E);
+  border:2px solid #C9A84C;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(0,0,0,0.5);
+  animation:aiFab 3s ease-in-out infinite;font-size:20px;}
+@keyframes aiFab{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.5),0 0 0 0 rgba(201,168,76,.4)}
+  50%{box-shadow:0 4px 18px rgba(0,0,0,.5),0 0 0 7px rgba(201,168,76,0)}}
+#ai-fab:hover{transform:scale(1.08);}
+#ai-fab-label{position:fixed;bottom:128px;right:12px;z-index:9400;
+  background:rgba(26,42,74,0.95);border:1px solid rgba(201,168,76,0.4);
+  color:#C9A84C;font-family:'Cinzel',serif;font-size:7px;
+  letter-spacing:2px;padding:3px 7px;pointer-events:none;white-space:nowrap;}
+/* PROMO POPUP */
+#promo-pop{position:fixed;inset:0;z-index:9300;background:rgba(0,0,0,0.87);
+  backdrop-filter:blur(5px);display:none;align-items:center;
+  justify-content:center;padding:18px;}
+#promo-pop.active{display:flex;}
+#promo-box{background:linear-gradient(135deg,#0D0A05,#15100A);
+  border:1px solid #C9A84C;max-width:460px;width:100%;
+  padding:36px 28px;text-align:center;position:relative;
+  box-shadow:0 0 50px rgba(201,168,76,0.18);}
+#promo-close{position:absolute;top:12px;right:14px;background:none;
+  border:none;color:#6B5020;font-size:18px;cursor:pointer;}
+@media(max-width:480px){
+  #ai-box{height:92vh;max-height:none;}
+  #ai-quick{display:flex;flex-wrap:wrap;}
+  #ai-fab{bottom:68px;right:14px;width:50px;height:50px;font-size:18px;}
+  #ai-fab-label{bottom:122px;right:8px;}
+}
+</style>
+
+<!-- FLOATING AI BUTTON -->
+<div id="ai-fab" onclick="openAI()" title="Asistente AI">🐉</div>
+<div id="ai-fab-label">ASISTENTE AI</div>
+
+<!-- AI OVERLAY (fully isolated) -->
+<div id="ai-overlay" onclick="if(event.target===this)closeAI()">
+  <div id="ai-box">
+    <div id="ai-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:#C9A84C;">🐉 ASISTENTE AI · YANGYIQUAN</div>
+      </div>
+      <button id="ai-close" onclick="closeAI()">✕ CERRAR</button>
+    </div>
+    <div id="ai-msgs">
+      <div class="ai-msg-bot">Hola. Soy el asistente del Yangyiquan Fa. Pregúntame sobre los 9 Poderes Internos, las 6 técnicas del Dragón, el Dao Zhiliao, las fórmulas Dit Da Jow, precios de clases en Granada o cualquier aspecto del Dossier Oficial.</div>
+    </div>
+    <div id="ai-quick">
+      <button class="aiq" onclick="doAsk(this)">¿Qué es el Yangyiquan?</button>
+      <button class="aiq" onclick="doAsk(this)">9 Poderes Internos</button>
+      <button class="aiq" onclick="doAsk(this)">Dao Zhiliao</button>
+      <button class="aiq" onclick="doAsk(this)">Dit Da Jow</button>
+      <button class="aiq" onclick="doAsk(this)">6 técnicas del Dragón</button>
+      <button class="aiq" onclick="doAsk(this)">¿Precios?</button>
+    </div>
+    <div id="ai-input-row">
+      <input id="ai-inp" type="text" placeholder="Escribe tu pregunta…" onkeydown="if(event.key==='Enter')sendAI()"/>
+      <button id="ai-send" onclick="sendAI()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO POPUP -->
+<div id="promo-pop" onclick="if(event.target===this)closePromo()">
+  <div id="promo-box">
+    <button id="promo-close" onclick="closePromo()">✕</button>
+    <div style="font-family:'Ma Shan Zheng',serif;font-size:40px;color:#C9A84C;opacity:.45;margin-bottom:8px;">阳意拳法</div>
+    <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;color:#C9A84C;margin-bottom:12px;">◆ OFERTA ESPECIAL ◆</div>
+    <h2 style="font-family:'Cinzel Decorative',serif;font-size:clamp(16px,4vw,22px);color:#F0DFC0;margin-bottom:10px;line-height:1.3;font-weight:900;">Tu Primera Clase de Prueba<br/>en Granada</h2>
+    <div style="font-family:'Cinzel Decorative',serif;font-size:clamp(30px,7vw,46px);color:#C9A84C;margin-bottom:12px;font-weight:900;text-shadow:0 0 20px rgba(201,168,76,0.4);">GRATIS</div>
+    <p style="font-family:'Inter',sans-serif;font-size:13px;color:#9A8060;line-height:1.8;margin-bottom:24px;font-weight:300;">Sin experiencia previa. Sin compromiso. El Instructor responde personalmente cada mensaje. Granada o en línea.</p>
+    <a href="https://wa.me/34674471678?text=Hola!%20Vi%20la%20oferta%20en%20la%20web%20y%20quiero%20reservar%20mi%20clase%20de%20prueba%20gratuita." target="_blank" onclick="closePromo()" style="display:block;background:linear-gradient(135deg,#C9A84C,#A07828,#C9A84C);background-size:200%;color:#0B0906;padding:15px;font-family:'Cinzel',serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;margin-bottom:10px;text-shadow:none;">◆ RESERVAR AHORA — GRATIS</a>
+    <button onclick="closePromo()" style="background:none;border:none;color:#5A3E18;font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;cursor:pointer;text-transform:uppercase;padding:4px;">No me interesa por ahora</button>
+  </div>
+</div>
+
+<script>
+// ═══ AI ASSISTANT LOGIC ═══════════════════════════════════════════
+var _aiHistory = [];
+function openAI(){ document.getElementById('ai-overlay').classList.add('active'); document.getElementById('ai-inp').focus(); }
+function closeAI(){ document.getElementById('ai-overlay').classList.remove('active'); }
+function doAsk(btn){ document.getElementById('ai-inp').value = btn.textContent; sendAI(); }
+function addMsg(text, cls){
+  var d = document.createElement('div');
+  d.className = cls; d.innerHTML = text;
+  var msgs = document.getElementById('ai-msgs');
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function sendAI(){
+  var inp = document.getElementById('ai-inp');
+  var v = inp.value.trim(); if(!v) return;
+  inp.value = '';
+  addMsg(v,'ai-msg-user');
+  _aiHistory.push(v);
+  setTimeout(function(){ addMsg(aiReply(v),'ai-msg-bot'); },600+Math.random()*300);
+}
+function aiReply(q){
+  var s = q.toLowerCase();
+  if(s.match(/yangyiquan|qué es|sistema|estilo/))
+    return '<strong style="color:#C9A84C">Yangyiquan Fa (阳意拳法)</strong> — El Puño de la Luz de la Intención.<br><br>Sistema marcial original fundado por <strong>Pedro Barros (Sultan Assad Abd-Al-Ghalib)</strong> en Granada, España. Se apoya en tres pilares:<br><br>• <strong>Yi (意)</strong> — Intención: la fuerza que guía todo movimiento<br>• <strong>Qi (气)</strong> — Energía vital cultivada mediante la respiración y la postura<br>• <strong>Dan Tian (丹田)</strong> — Centro energético, fuente de todo el Fajin<br><br>Incluye 9 Poderes Internos (Nei Gong), 6 técnicas del Dragón y la rama terapéutica completa: <strong>Dao Zhiliao</strong>.';
+  if(s.match(/9 poder|nueve|nei gong|interno/))
+    return '<strong style="color:#C9A84C">Los 9 Poderes Internos (内功):</strong><br><br><strong>4 PODERES EXTREMOS:</strong><br>I. Yi Jing — El Ya Está (visión omnisciente)<br>II. Tiān (天) — El Cielo (fuerzas celestiales)<br>III. Dì Cí (地磁) — La Tierra-Imán (base del Fajin)<br>IV. Dì Yù (地狱) — El Submundo (transformación de fuerzas oscuras)<br><br><strong>5 PODERES INTERMEDIOS:</strong><br>V. Shén Shí — El Corazón del Otro<br>VI. Chuāng Zào (创造) — La Creación<br>VII. Zhǎn (斩) — El Corte<br>VIII. Bǎo (宝) — El Tesoro Oculto<br>IX. Zhì (至) — El Inmortal';
+  if(s.match(/dao zhiliao|terapia|medicina|curación/))
+    return '<strong style="color:#C9A84C">Dao Zhiliao (道治疗)</strong> — La Cura a Través del Camino.<br><br>La rama terapéutica del Yangyiquan. Tres pilares:<br>• <strong>Dit Da Jow</strong> — 5 fórmulas herbales tópicas exclusivas<br>• <strong>Terapia Yin-Yang</strong> — energía Yang activa, Yin extrae inflamación<br>• <strong>Intención Terapéutica Yi</strong> — la palabra y la intención como instrumentos de sanación<br><br>El Instructor posee certificaciones en Shiatsu, Masaje Deportivo y Sanación Pránica.';
+  if(s.match(/dit da jow|fórmula|jow|hierba/))
+    return '<strong style="color:#C9A84C">Dit Da Jow (跌打酒)</strong> — 5 fórmulas herbales propietarias:<br><br>I. Bone Strength — Fortalecimiento óseo (100% eficacia madura)<br>II. Tendon Flex — Regeneración tendinosa (97-99%)<br>III. Joint Relief — Anti-inflamatorio articular (96-99%)<br>IV. Skin Regenerator — Regeneración dérmica (97-99%)<br>V. Muscle & Soft Tissue — Recuperación muscular (97-99%)<br><br><strong style="color:#7B1A1A">⚠ Las composiciones son propiedad intelectual exclusiva. No se revelan.</strong>';
+  if(s.match(/técnica|dragon|6 técnica|long|arsenal/))
+    return '<strong style="color:#C9A84C">Las 6 Técnicas del Dragón:</strong><br><br>I. <strong>龙底拳 Long Dǐ Quán</strong> — El Golpe Terrestre (horizontal, Fajin completo)<br>II. <strong>龙闪爪 Long Shǎn Zhǎo</strong> — El Dragón Extiende las Garras (2 fases)<br>III. <strong>龙天拳 Long Tiān Quán</strong> — El Golpe Celestial (ascendente)<br>IV. <strong>龙尾鞭 Long Wěi Biān</strong> — El Látigo de la Cola (bloqueo + contraataque)<br>V. <strong>龙摔角 Long Suāi Jiǎo</strong> — Rompe la Mandíbula (nocaut neurológico)<br>VI. <strong>龙战意 Long Zhàn Yì</strong> — El Dragón Abre las Alas (bilateral)';
+  if(s.match(/precio|coste|cuánto|plan|clase|50|100|200/))
+    return '<strong style="color:#C9A84C">Planes de Entrenamiento en Granada:</strong><br><br>🥋 <strong>Mensualidad Regular — 50€/mes</strong><br>Clases grupales, online o presencial.<br><br>⚔️ <strong>Plan Intensivo Elite — 200€/mes</strong> ⭐<br>3+ sesiones privadas/semana (valor: 1.200€). Ahorro: 1.000€.<br><br>🎯 <strong>Clase Privada — 100€/hora</strong><br>Sesión individual completa.<br><br>📱 <strong>+34 674 471 678</strong> (WhatsApp)<br>✉ <strong>contact@yangyiquan.international</strong><br><br>Tu <strong>primera clase de prueba en Granada es GRATIS.</strong>';
+  if(s.match(/contacto|whatsapp|email|granada|dónde|ubicac/))
+    return '<strong style="color:#C9A84C">Contacto directo:</strong><br><br>📱 WhatsApp: <strong>+34 674 471 678</strong><br>✉ <strong>contact@yangyiquan.international</strong><br>📸 @yangyiquan.kungfu.sda<br>📍 Granada, Andalucía, España<br><br>Clases presenciales en Granada y online para todo el mundo. El Instructor responde personalmente.';
+  if(s.match(/libro|volumen|3 vol|manual|pdf/))
+    return '<strong style="color:#C9A84C">Pack 3 Volúmenes del Yangyiquan:</strong><br><br>📚 <strong>Vol. I — Fundamentos</strong>: Filosofía, los 9 Poderes Internos, las 3 Virtudes<br>📚 <strong>Vol. II — Técnicas</strong>: Las 6 formas del Dragón con análisis biomecánico<br>📚 <strong>Vol. III — Dao Zhiliao</strong>: Fórmulas Dit Da Jow, terapia Yin-Yang<br><br>Disponibles en <strong>Portugués</strong> (edición en español en preparación).<br>Para pedir: <strong>WhatsApp +34 674 471 678</strong>';
+  return 'Entiendo tu pregunta. Mi base de conocimiento cubre el Dossier Oficial completo del Yangyiquan. Para una respuesta personalizada, contacta al Instructor directamente:<br><strong>📱 +34 674 471 678</strong><br><strong>✉ contact@yangyiquan.international</strong>';
+}
+// ═══ PROMO POPUP LOGIC ════════════════════════════════════════════
+if(!sessionStorage.getItem('promoSeen')){
+  var _promoFired=false;
+  window.addEventListener('scroll',function(){
+    if(!_promoFired && window.scrollY > window.innerHeight*0.4){
+      _promoFired=true;
+      setTimeout(function(){document.getElementById('promo-pop').classList.add('active');},800);
+    }
+  },{passive:true});
+}
+function closePromo(){document.getElementById('promo-pop').classList.remove('active');sessionStorage.setItem('promoSeen','1');}
+</script>
+
 </body>
 </html>
